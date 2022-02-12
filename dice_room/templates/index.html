@@ -1,0 +1,14 @@
+{% extends 'page.html' %}
+{% block main %}
+<form action="/r/join/">
+  <p>
+    <label>Room</label><br />
+    <input type="text" name="room" maxlength="128" placeholder="Enter the room you'd like to join." required />
+  </p>
+  <p>
+    <label>Nickname</label><br />
+    <input type="text" name="nickname" placeholder="Give yourself a nickname (optional)." maxlength="128"/>
+  </p>
+  <button type="submit">Join</button>
+</form>
+{% endblock %}

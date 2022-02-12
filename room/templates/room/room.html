@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<main>
+  <nav>
+    <a href="/">← Back</a>
+  </nav>
+  <h1>{{ room }}</h1>
+  <span id="messages">
+    {% for message in messages %} 
+      {% include 'room/message.html' with user=message.user message=message.message %} 
+    {% endfor %}
+    <p>{{ request.COOKIES.nickname }} joined</p>
+  </span>
+  {% include 'room/form.html' %}
+</main>
+
+<script>
+  const channel = pusher.subscribe('{{ room }}');
+  channel.bind('ping', function (data) {
+    const messages = document.getElementById('messages');
+    messages.innerHTML = messages.innerHTML + data;
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+</script>
+{% endblock %}
