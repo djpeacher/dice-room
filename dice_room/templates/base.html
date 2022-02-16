@@ -1,47 +1,53 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Dice Room</title>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}" />
-    <link rel="manifest" href="{% static 'site.webmanifest' %}" />
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
-    <script src="https://unpkg.com/hyperscript.org@0.9.4"></script>
-    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-      var pusher = new Pusher('{{ PUSHER.KEY }}', {
-        cluster: '{{ PUSHER.CLUSTER }}',
-      });
-      const Toast = Swal.mixin({
-        title: 'Getting Started',
-        text: 'Something went wrong!',
-        confirmButtonColor: 'var(--accent)',
-        background: 'var(--bg)',
-        color: 'var(--text)',
-      });
-    </script>
-    <style>
-      main {
-        margin-bottom: 1em;
-        overflow-wrap: break-word;
-      }
-      .swal2-confirm {
-        color: var(--bg) !important;
-      }
-    </style>
-  </head>
-  <body>
-    {% block content %}{% endblock %}
-    <script>
-      document.body.addEventListener('htmx:configRequest', (event) => {
-        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-      });
-    </script>
-  </body>
+
+<head>
+  <title>Dice Room</title>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}" />
+  <link rel="manifest" href="{% static 'site.webmanifest' %}" />
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+  <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/twa.css' %}">
+  <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+  <script src="https://unpkg.com/hyperscript.org@0.9.4"></script>
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    var pusher = new Pusher('{{ PUSHER.KEY }}', {
+      cluster: '{{ PUSHER.CLUSTER }}',
+    });
+    const Toast = Swal.mixin({
+      title: 'Getting Started',
+      text: 'Something went wrong!',
+      confirmButtonColor: 'var(--accent)',
+      background: 'var(--bg)',
+      color: 'var(--text)',
+    });
+  </script>
+  <style>
+    main {
+      margin-bottom: 1em;
+      overflow-wrap: break-word;
+    }
+
+    .swal2-confirm {
+      color: var(--bg) !important;
+    }
+  </style>
+</head>
+
+<body>
+  {% block content %}{% endblock %}
+  <script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    });
+  </script>
+</body>
+
 </html>
