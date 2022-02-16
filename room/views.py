@@ -11,7 +11,7 @@ NICKNAMES = ['Taako', 'Magnus Burnsides', 'Merle Highchurch', 'Barry Bluejeans',
 
 def _roll(dice_notation):
     r = requests.get(
-        f'https://rpgdr.djpeacher.com/api/roll/{dice_notation}').json()
+        f'https://rpg-dice-roller-api.djpeacher.com/api/roll/{dice_notation}').json()
     return r.get('output') or f"{dice_notation} [Invalid Notation]"
 
 
