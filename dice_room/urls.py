@@ -6,7 +6,7 @@ from . import views as views
 
 urlpatterns = [
     path('', views.index),
-    path('r/', include('room.urls')),
+    path('', include('room.urls')),
     path(settings.ADMIN_URL, admin.site.urls),
 ]
 handler404 = RedirectView.as_view(url='/')

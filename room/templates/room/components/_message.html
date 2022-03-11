@@ -1,0 +1,14 @@
+<div class="chat__item">
+    <p class="chat__time">
+        <small class="chat__time">
+            {% if showTime%}
+            {{ message.created|date:"g:i A" }}
+            {% endif %}
+        </small>
+    </p>
+    <p class="chat__message">
+        <span class="chat__username">
+            {{ message.user }}
+        </span> {{ message.message|linebreaksbr }}
+    </p>
+</div>

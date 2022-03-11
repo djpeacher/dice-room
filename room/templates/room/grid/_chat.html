@@ -1,0 +1,42 @@
+<main class="grid__main chat">
+  <div class="chat__content hidden" id="chat" _="on load my.scrollTo(0, my.scrollHeight) then remove .hidden">
+    {% include 'room/components/_welcome.html' %}
+    {% regroup messages by created|date:"F j, Y" as dates %}
+    {% for date in dates %}
+    {% include 'room/components/_divider.html' with content=date.grouper %}
+    {% regroup date.list by created|date:"g:i A" as times %}
+    {% for time in times %}
+    {% for message in time.list %}
+    {% include 'room/components/_message.html' with showTime=forloop.first %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+  </div>
+  <form class="chat__compose" hx-post="/chat/" hx-target=".chat__input" hx-trigger="message:submit"
+        _="on message:submit set .chat__input.value to null then window.fathom.trackGoal('FRVWVWU0', 0)">
+    <input type="hidden" name="room" value="{{ zone_name }}" />
+    <textarea class="chat__input" placeholder="Message #{{ zone_name  }}" name="message" id="message" maxlength="2000"
+              _="on load me.focus()
+                 on input set my.style.height to null
+                 set my.style.height to my.scrollHeight + 'px'"></textarea>
+  </form>
+</main>
+<script>
+  document
+    .getElementById('message')
+    .addEventListener('keydown', function (e) {
+      const keyCode = e.which || e.keyCode;
+      if (keyCode === 13 && !e.shiftKey) {
+        e.preventDefault();
+        htmx.trigger(htmx.find('#message'), 'message:submit');
+      }
+    });
+</script>
+<script>
+  const channel = pusher.subscribe('{{ zone_name }}');
+  channel.bind('{{ PUSHER.SEND_MESSAGE }}', function (data) {
+    const chat = document.getElementById('chat');
+    chat.innerHTML = chat.innerHTML + data;
+    chat.scrollTo(0, chat.scrollHeight);
+  });
+</script>

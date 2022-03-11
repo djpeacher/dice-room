@@ -1,14 +1,21 @@
-{% extends 'page.html' %}
-{% block main %}
-<form action="/r/join/">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'styles/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+  <i class="twa twa-5x twa-game-die"></i>
+  <h1>Crit Zone</h1>
+  <p>Roll dice online with friends!</p>
+  <a class="button" href="/z/general/" onclick="window.fathom.trackGoal('7G02TOAV', 0);">Roll for initiative!</a>
+</main>
+<footer>
   <p>
-    <label>Room</label><br />
-    <input type="text" name="room" maxlength="128" placeholder="Enter the room you'd like to join." required />
+    Made with <i class="twa twa-red-heart"></i> by
+    <a href="https://www.djpeacher.com/" target="_blank">Jonathan Peacher</a>
   </p>
-  <p>
-    <label>Nickname</label><br />
-    <input type="text" name="nickname" placeholder="Give yourself a nickname (optional)." maxlength="128"/>
-  </p>
-  <button type="submit">Join</button>
-</form>
+</footer>
 {% endblock %}

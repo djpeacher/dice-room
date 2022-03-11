@@ -1,26 +1,18 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}#{{ zone_name }} | {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'styles/app.css' %}">
+<meta name="robots" content="noindex">
+{% endblock %}
+
 {% block content %}
-
-<main>
-  <nav>
-    <a href="/">← Back</a>
-  </nav>
-  <h1>{{ room }}</h1>
-  <span id="messages">
-    {% for message in messages %} 
-      {% include 'room/message.html' with user=message.user message=message.message %} 
-    {% endfor %}
-    <p>{{ request.COOKIES.nickname }} joined</p>
-  </span>
-  {% include 'room/form.html' %}
-</main>
-
-<script>
-  const channel = pusher.subscribe('{{ room }}');
-  channel.bind('ping', function (data) {
-    const messages = document.getElementById('messages');
-    messages.innerHTML = messages.innerHTML + data;
-    window.scrollTo(0, document.body.scrollHeight);
-  });
-</script>
+<div class="grid" _="on htmx:responseError alert(event.detail.xhr.responseText)">
+  {% include 'room/grid/_header.html' %}
+  {% include 'room/grid/_sidebar_room.html' %}
+  {% include 'room/grid/_chat.html' %}
+  {% include 'room/grid/_sidebar_tray.html' %}
+</div>
 {% endblock %}

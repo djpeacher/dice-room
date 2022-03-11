@@ -38,6 +38,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_USE_SESSIONS = True
+
 ROOT_URLCONF = 'dice_room.urls'
 
 TEMPLATES = [
@@ -108,4 +110,5 @@ PUSHER = {
     'KEY': os.environ['PUSHER_KEY'],
     'SECRET': os.environ['PUSHER_SECRET'],
     'CLUSTER': os.environ['PUSHER_CLUSTER'],
+    'SEND_MESSAGE': 'send-message'
 }

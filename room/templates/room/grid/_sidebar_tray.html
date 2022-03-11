@@ -1,0 +1,12 @@
+<div class="grid__sidebar-right sidebar">
+    <div class="sb__main">
+        <p class="sb__heading">DICE TRAY</p>
+        {% for formula in request.session.tray %}
+        {% include 'room/components/_dice.html' %}
+        {% endfor %}
+        <div class="sb__item">
+            <button class="sb__heading sb__action" hx-target="closest .sb__item" hx-swap="beforebegin" hx-post="/dice/"
+                    hx-prompt="Enter formula" onclick="window.fathom.trackGoal('S30XX1KG', 0);">+ ADD FORMULA</button>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,0 @@
-<form hx-post="/r/{{room}}/" hx-target="this" hx-swap="outerHTML">
-    <input type="text"id="message" name="message"  _="on load me.focus()" placeholder="Send message or roll dice!">
-    <button type="submit">Send</button>
-    <button _="on click js Toast.fire('Help', '{% include 'room/help.html' %}') end">Help</button>
-</form>

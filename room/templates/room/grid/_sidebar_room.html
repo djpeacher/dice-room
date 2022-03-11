@@ -1,0 +1,28 @@
+<nav class="grid__sidebar-left sidebar">
+  <div class="sb__main">
+    <p class="sb__heading">ZONES</p>
+    {% for room in request.session.zones %}
+    <div class="sb__item {% if room == zone_name %}sb--selected{% endif %}">
+      <a class="sb__action" href="/z/{{ room }}/">#{{ room }}</a>
+      <button class="fa-btn" hx-target="closest .sb__item" hx-swap="outerHTML"
+              hx-delete="/z/{{ room }}/{% if room == zone_name %}?redirect{% endif %}"
+              onclick="window.fathom.trackGoal('5BW4NYGK', 0);">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+    {% endfor %}
+    <div class="sb__item">
+      <button class="sb__heading sb__action" hx-post="/z/" hx-prompt="Enter zone name"
+              onclick="window.fathom.trackGoal('UMA0EHTY', 0);">
+        + JOIN ZONE
+      </button>
+    </div>
+  </div>
+  <div class="sb__footer">
+    <p class="sb__username">{{ request.session.name }}</p>
+    <button class="fa-btn fa-btn--no-padding" hx-put="/name/" hx-prompt="Enter name" hx-target=".sb__username"
+            hx-swap="innerHTML" onclick="window.fathom.trackGoal('GQ2TGLOE', 0);">
+      <i class="fa-solid fa-gear fa-lg"></i>
+    </button>
+  </div>
+</nav>

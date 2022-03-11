@@ -1,0 +1,42 @@
+/* Discord Theme */
+:root {
+  --bg: #ffffff;
+  --sb: #f2f3f5;
+  --sb-selected: #d4d7db;
+  --sb-hover: #e8eaed;
+  --sb-text-selected: #060607;
+  --sb-text-hover: #2e3338;
+  --sb-text: #6a7480;
+  --sb-footer: #ebedef;
+  --chat-hover: rgba(6, 6, 7, 0.02);
+  --chat-input: #ebedef;
+  --scroll-thumb: #cccccc;
+  --scroll-track: #f2f2f2;
+  --icon: #50565f;
+  --divider-text: #747f8d;
+  --divider-line: rgba(6, 6, 7, 0.08);
+  --accent-bg: #f2f3f5;
+  --accent: #5a65ea;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #37393e;
+    --sb: #2f3136;
+    --sb-selected: #3a3c42;
+    --sb-hover: #34363c;
+    --sb-text-selected: #fff;
+    --sb-text-hover: #dcddde;
+    --sb-text: #8e9297;
+    --sb-footer: #292b2f;
+    --chat-hover: rgba(4, 4, 5, 0.07);
+    --chat-input: #41444a;
+    --scroll-thumb: #202225;
+    --scroll-track: #2f3337;
+    --icon: #b9bbbe;
+    --divider-text: ##72767d;
+    --divider-line: rgba(255, 255, 255, 0.06);
+    --accent-bg: #2f3136;
+    --accent: #5a65ea;
+  }
+}

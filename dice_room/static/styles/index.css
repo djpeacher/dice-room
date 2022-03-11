@@ -1,7 +1,50 @@
-/*
-Preamble from https://ellekasai.github.io/twemoji-awesome/,
-licensed under MIT: https://ellekasai.mit-license.org/
-*/
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+body > footer {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  border-top: none;
+}
+
+h1 {
+  font-size: 8rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.button,
+a.button {
+  border: none;
+  border-radius: 5px;
+  background: var(--accent);
+  font-size: 1rem;
+  color: #fff;
+  padding: 0.7rem 0.9rem;
+  margin: 0.5rem 0;
+  display: inline-block;
+  line-height: 1.2rem;
+}
+
+.button:hover,
+.button:focus {
+  filter: brightness(1.4);
+  cursor: pointer;
+  text-decoration: none;
+}
 
 .twa {
   display: inline-block;
@@ -54,8 +97,21 @@ licensed under MIT: https://ellekasai.mit-license.org/
   background-size: 5em 5em;
 }
 
-/* End preamble; begin emoji classes */
+.twa-game-die {
+  background-image: url('https://twemoji.maxcdn.com/v/latest/svg/1f3b2.svg');
+}
 
 .twa-red-heart {
   background-image: url('https://twemoji.maxcdn.com/v/latest/svg/2764.svg');
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 4rem;
+    margin-top: 0;
+  }
+
+  .twa-game-die {
+    background-size: 3em 3em;
+  }
 }
